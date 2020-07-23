@@ -1,30 +1,50 @@
-import Vue from "vue";
-import VueRouter from "vue-router";
-import Home from "../views/Home.vue";
+import Vue from 'vue'
+import VueRouter from 'vue-router'
+import login from '../views/login.vue'
+import index from '../views/index.vue'
+import register from '../views/register.vue'
+import houtai from '../views/houtai.vue'
+import alllink from '../components/alllink.vue'
 
-Vue.use(VueRouter);
-
-const routes = [
-  {
-    path: "/",
-    name: "Home",
-    component: Home
-  },
-  {
-    path: "/about",
-    name: "About",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () =>
-      import(/* webpackChunkName: "about" */ "../views/About.vue")
-  }
-];
+Vue.use(VueRouter)
 
 const router = new VueRouter({
-  mode: "history",
-  base: process.env.BASE_URL,
-  routes
-});
+  routes: [
+    {
+      path: '/',
+      redirect: 'login'
+    },
+    {
+      name: 'login',
+      path: '/login',
+      meta: { title: '登录页' },
+      component: login
+    },
+    {
+      name: 'register',
+      path: '/register',
+      meta: { title: '注册页' },
+      component: register
+    },
+    {
+      name: 'index',
+      path: '/index',
+      meta: { title: '首页' },
+      component: index
+    },
+    {
+      name: 'houtai',
+      path: '/houtai',
+      meta: { title: '后台搜索' },
+      component: houtai
+    },
+    {
+      name: 'alllink',
+      path: '/alllink',
+      meta: { title: 'all跳转页面' },
+      component: alllink
+    }
+  ]
+})
 
-export default router;
+export default router
